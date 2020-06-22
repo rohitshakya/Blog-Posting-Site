@@ -26,6 +26,16 @@
 Username: rohit
 Password: shakya
 ```
+
+```
+Username: mayank
+Password: kaushik
+```
+
+```
+Username: nitesh
+Password: yadav
+```
  
 ## Copyright and License
 
