@@ -32,9 +32,8 @@ if ($conn->connect_error) {
 if ($result->num_rows > 0) {
 
   // output data of each row
-  echo "Title &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp"."Description<br>";
   while($row = $result->fetch_assoc()) {
-    echo  $row["title"]. " &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp" . $row["description"]. "<br>";
+    echo  "<h3><strong>".$row["title"]."</strong></h3>". $row["description"]. "<br>Posted by ".$_SESSION['username']." on ". date("d/m/Y")."</small>"."<hr>";
   }
 } else {
   echo "0 results";
@@ -73,8 +72,33 @@ $conn->close();
 header("Refresh:0; url=user.php");
 }
 
+function uploadImage() {
+$servername = "localhost";
+$dbusername = "root";
+$password = "";
+$database="mydb";
+$id=$_SESSION['id'];
+error_reporting ( E_ALL ) ;
+ini_set ( 'display_errors' , 1 ) ;
+// Create connection
+$conn = new mysqli($servername, $dbusername, $password,$database);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+} 
+$sql = "UPDATE `user` SET `profile` =   WHERE user_id=$id";
+if ($conn->query($sql) === TRUE) {
+  
+} else {
+  echo "Error: " . $sql . "<br>" . $conn->error;
+}
+  
+$conn->close();  
+header("Refresh:0; url=user.php");
+}
+
 function deleteFunction() {
-    echo 'Delete function called';
 $servername = "localhost";
 $dbusername = "root";
 $password = "";
@@ -101,8 +125,41 @@ if ($conn->query($sql) === TRUE) {
 $conn->close(); 
 header("Refresh:0; url=user.php"); 
 
-
-
   }
+function getImage()
+{
+  
+//$id = $_GET['id'];
+  // do some validation here to ensure id is safe
+$servername = "localhost";
+$dbusername = "root";
+$password = "";
+$database="mydb";
+$id=$_SESSION['id'];
 
+error_reporting ( E_ALL ) ;
+ini_set ( 'display_errors' , 1 ) ;
+// Create connection
+$conn = new mysqli($servername, $dbusername, $password,$database);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+} 
+  $query = "SELECT profile FROM user WHERE user_id=$id";  
+                $result = mysqli_query($conn, $query);  
+                while($row = mysqli_fetch_array($result))  
+                {  
+                     echo '  
+                          <tr>  
+                               <td>  
+                                    <img src="data:image/jpeg;base64,'.base64_encode($row['profile'] ).'" height="200" width="200" class="img-thumnail" alt="Avatar" style="border-radius: 50%; /> 
+                                     
+                               </td>  
+                          </tr>  
+                     ';  
+                }  
+
+  
+}
 ?>
