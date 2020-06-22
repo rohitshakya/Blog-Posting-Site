@@ -1,4 +1,4 @@
-### v5.3.2 Blog Posting Site featured with Weather, News and Geo location Coordinate System with search box navigation using curl API and RSS feed.  
+### v5.5 Blog Posting Site featured with Weather, News and Geo location Coordinate System with search box navigation using curl API and RSS feed.  
 [Click here to view](http://blogpostsite.epizy.com/)
 ### Install Xampp for project php
 
