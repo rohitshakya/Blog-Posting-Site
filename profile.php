@@ -1,16 +1,15 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Insert Image in MySql using PHP</title>
-</head>
-<body>
+
+
 <?php
+session_start();
 $msg = '';
+echo $msg;
 if($_SERVER['REQUEST_METHOD']=='POST'){
     $image = $_FILES['image']['tmp_name'];
     $img = file_get_contents($image);
     $con = mysqli_connect('localhost','root','','mydb') or die('Unable To connect');
-    $sql = "insert into user (profile) values(?)";
+    //$sql= "INSERT INTO `user` (profile) VALUES (?) ";
+    $sql= "UPDATE user set profile=? WHERE user_id=$_SESSION[id] ";
     $stmt = mysqli_prepare($con,$sql);
 
     mysqli_stmt_bind_param($stmt, "s",$img);
@@ -25,6 +24,15 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
     mysqli_close($con);
 }
 ?>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>UploadPage</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" >
+  <meta name="author" content="Rohit Shakya">
+  </head>
+<body style="background: white;">
 <form action="" method="post" enctype="multipart/form-data">
     <input type="file" name="image" />
     <button>Upload</button>
@@ -32,5 +40,6 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
 <?php
     echo $msg;
 ?>
+<br><a href="user.php">Back</a>
 </body>
 </html>
