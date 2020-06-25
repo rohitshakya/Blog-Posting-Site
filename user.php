@@ -24,13 +24,16 @@ if (isset($_GET['num'])) {
 print6();
 }
 ?>
+<section><br><br>
+<div class="container">
 
+    <div class="row">
 
-  <!-- Page Content -->
-  <div class="col-lg-3">
-        <?php getImage();?> 
-  <div class="container">
-  <h2><strong>Welcome!!
+      <div class="col-lg-3">
+        <div class="list-group">
+          <?php getImage();?>
+          <div class="container">
+  <h2><br><strong>Welcome!!
 <?php
 if(!isset($_SESSION['username']))
 {
@@ -41,13 +44,10 @@ else
   echo ucfirst($_SESSION['username']);  
 } 
 ?></strong></h2>
-<p>"You are successfully authenticated!!"</p><?php echo $_SESSION['msg']."<br>";?></strong>
-<a href='profile.php'>Update Profile</a><br>
-<a href='p2.php'>Use Default pic</a><br>
-<a href='user.php?clearAll=true'>Delete All</a>
-
-
-
+<p>You are successfully authenticated</p><?php echo $_SESSION['msg']."<br>";?></strong>
+<br><a href='profile.php'>Update Profile</a>
+<br><a href='p2.php'>Use Default pic</a>
+<br><a href='user.php?clearAll=true'>Delete All</a>
 <hr>
     <div class="autocomplete">
       <form action="user.php" method="post">
@@ -57,22 +57,24 @@ else
       </form> 
     </div>
 <hr>
+
 </div>
 </div>
-
-
-
+      
+<!--right side part comment section-->
       <div class="col-lg-9">
         <div class="card mt-4">
-          <div class="card-body">
-            <h3 class="card-title">Comments and Posts</h3>
+        </div>
+        
+          <div class="card-header">
             <?php
             showComment();?>
-            </div>
+          </div>
+    
+          </div>
         </div>
-        </div>
-
-
+        <!-- /.card -->
+</div></div></section>
  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
