@@ -45,7 +45,7 @@
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
     <div class="container">
-      <a class="navbar-brand" href="user.php">Profile</a>
+      <a class="navbar-brand" href="user.php">Home</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -55,7 +55,7 @@
             <a class="nav-link" href="weather.php"></span> Weather</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#"></span> Journel</a>
+            <a class="nav-link" href="journel.php"></span>My Journel</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="logout.php"></span> Log out</a>
